@@ -22,7 +22,7 @@ public class Envelope {
 
 
 	public Envelope() {
-		super();
+		this.dollars = this.quarters = this.dimes = this.nickels = this.pennies = 0;
 	}
 
 
@@ -75,7 +75,7 @@ public class Envelope {
 		this.pennies = pennies;
 	}
 	
-	public double getToatalCents() {
+	public int getTotalCents() {
 		return 0;
 	}
 
