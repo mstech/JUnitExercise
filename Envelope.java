@@ -1,4 +1,5 @@
 
+// Class Envelope is a simulated envelope of money containing Dollars, Quarters, Nickels, Dimes and Pennies.
 public class Envelope {
 	
 	private int dollars;
@@ -75,8 +76,9 @@ public class Envelope {
 		this.pennies = pennies;
 	}
 	
+	// returns the total number of cents in the envelope.
 	public int getTotalCents() {
-		return 0;
+		return dollars*100 + quarters*25 +dimes*10 +nickels*5 + pennies;
 	}
 
 	

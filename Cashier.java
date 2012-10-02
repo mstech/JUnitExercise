@@ -1,11 +1,11 @@
 
 public class Cashier {
 
-	public Envelope makeChange(Envelope env, int dollars, int cents) {
+	public Envelope makeChange(Envelope env, int dollars, int cents) throws NegativeBalanceException {
 		int numberOfCentsRemaining = (env.getTotalCents() - (dollars * 100 + cents));
-		try {
+		//try {
 			if (numberOfCentsRemaining < 0) {
-				throw new NegativeBalanceException("Price exceeds envelope contents by " + numberOfCentsRemaining + "cents.");
+				throw new NegativeBalanceException("Price exceeds envelope contents by " + numberOfCentsRemaining + " cents.");
 			} else {
 				//calculate amount off numberOfCentsRemaining
 				Envelope ret = new Envelope();
@@ -16,31 +16,28 @@ public class Cashier {
 				}
 				if (numberOfCentsRemaining >= 25) {
 					int numQuarters = (int) Math.floor(numberOfCentsRemaining / 25);
-					ret.setDollars(numQuarters);
+					ret.setQuarters(numQuarters);
 					numberOfCentsRemaining -= (numQuarters * 25);	
 				}
 				if (numberOfCentsRemaining >= 10) {
 					int numDimes = (int) Math.floor(numberOfCentsRemaining / 10);
-					ret.setDollars(numDimes);
+					ret.setDimes(numDimes);
 					numberOfCentsRemaining -= (numDimes * 10);					
 				}
 				if (numberOfCentsRemaining >= 5) {
 					int numNickels = (int) Math.floor(numberOfCentsRemaining / 05);
-					ret.setDollars(numNickels);
+					ret.setNickels(numNickels);
 					numberOfCentsRemaining -= (numNickels * 05);
 				}
 				if (numberOfCentsRemaining >= 1) {
 					int numPennies = numberOfCentsRemaining;
-					ret.setDollars(numPennies);
+					ret.setPennies(numPennies);
 					numberOfCentsRemaining -= (numPennies);
 				}
 				
 				return ret;
 			}
-		} catch (NegativeBalanceException e) {
-			System.out.println(e.getMessage());
-		}
-		return (new Envelope());
 	}	
+	
 	
 }
